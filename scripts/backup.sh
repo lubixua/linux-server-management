@@ -16,6 +16,6 @@ chmod 600 "$ARCHIVE"
 echo "Backup created: $ARCHIVE"
 
 # Remove archives older than RETENTION_DAYS (default 7)
-RETENTION_DAYS="${RETENTION_DAYS:-7}"
+RETENTION_DAYS="${RETENTION_DAYS:-0}"
 find "$DEST" -maxdepth 1 -name 'backup_*.tar.gz' -mtime +"$RETENTION_DAYS" -delete
 echo "Removed backups older than $RETENTION_DAYS days"
