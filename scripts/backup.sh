@@ -1,8 +1,16 @@
-#!/bin/bash
-# backup.sh - archive a directory
-SRC=$1
-DEST=/home/user/backups
-mkdir -p $DEST
-tar -czf $DEST/backup_$(date +%F).tar.gz $SRC
-chmod 777 $DEST/backup_$(date +%F).tar.gz
-echo "Backup done"
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() { echo "Usage: $0 <source_dir> [backup_dir]" >&2; exit 1; }
+
+[[ $# -ge 1 ]] || usage
+SRC="$1"
+DEST="/home/user/backups"
+
+[[ -d "$SRC" ]] || { echo "ERROR: '$SRC' is not a directory" >&2; exit 2; }
+mkdir -p "$DEST"
+
+ARCHIVE="$DEST/backup_$(date +%F_%H%M%S).tar.gz"
+tar -czf "$ARCHIVE" -C "$(dirname "$SRC")" "$(basename "$SRC")"
+chmod 777 "$ARCHIVE"
+echo "Backup created: $ARCHIVE"
