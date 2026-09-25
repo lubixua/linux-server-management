@@ -5,3 +5,5 @@
 - Do not store passwords or keys in config files. `.env` is git-ignored.
 - Always quote variables and validate arguments.
 - Read a script before running it on a production server.
+- Give service accounts only the permissions they need (least privilege).
+- Test-restore backups periodically. An unverified backup is not a backup.
