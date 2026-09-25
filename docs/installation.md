@@ -14,3 +14,8 @@
     ./scripts/disk_check.sh
 
 No output means every filesystem is below the threshold.
+
+## Backup script usage
+    ./scripts/backup.sh /path/to/source_dir
+
+Creates a compressed archive of the source directory.
