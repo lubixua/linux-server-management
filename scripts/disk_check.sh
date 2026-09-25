@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # disk_check.sh - warn when a filesystem is above a usage threshold.
 # Usage: ./disk_check.sh
-THRESHOLD=80
+THRESHOLD="${DISK_THRESHOLD:-85}"
 
 df -P -x tmpfs -x devtmpfs | awk 'NR>1 {print $5, $6}' | while read -r usage mount; do
   pct="${usage%\%}"
