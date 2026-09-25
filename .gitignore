@@ -1,0 +1,9 @@
+*.log
+*.tmp
+*.bak
+*.swp
+.env
+*.local.conf
+backups/
+.vscode/
+.idea/
